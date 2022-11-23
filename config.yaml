@@ -1,0 +1,30 @@
+config:
+    
+    # 接口配置
+    api:
+        # 使用RPC库
+        lib: grpc
+        ip: 127.0.0.1
+        port: 50051
+
+    # 日志配置
+    log:
+        # 使用日志库
+        lib: spdlog
+        # 0-控制台 1-文件(按天划分) 2-两者都有
+        mode: 2
+        console:
+            level: debug
+            pattern:
+        file:
+            # 生成日志的名称
+            name: logs/spdlog.log
+            level: debug
+            pattern:
+            # 每日几点几分重新生成日志文件
+            rotation_hour: 2
+            rotation_minute: 30
+            # 是否覆盖文件
+            truncate: false
+        # 刷新日志缓存的时机
+        flush_on: debug

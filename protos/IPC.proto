@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package IPC;
+
+service IPCSrv {
+    rpc call (IPCRequest) returns (IPCReply) {}
+}
+
+message IPCRequest {
+    string body = 1;
+}
+
+message IPCReply {
+    string body = 1;
+}

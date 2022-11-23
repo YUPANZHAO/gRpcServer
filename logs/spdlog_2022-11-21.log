@@ -1,0 +1,6 @@
+[2022-11-21 11:21:22.132] [spdlog] [info] init grpc server...
+[2022-11-21 11:21:22.133] [spdlog] [info] grpc listing port: 127.0.0.1:50051
+[2022-11-21 11:21:22.136] [spdlog] [info] grpc build and start successful!
+[2022-11-21 11:21:22.136] [spdlog] [info] grpc server start wait!
+[2022-11-21 11:22:00.491] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-21 11:22:13.258] [spdlog] [warning] grpc server shutdown!

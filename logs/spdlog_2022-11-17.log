@@ -1,0 +1,25 @@
+[2022-11-17 09:39:40.290] [spdlog] [info] init grpc server...
+[2022-11-17 09:39:40.290] [spdlog] [info] grpc listing port: 172.21.137.188:50051
+[2022-11-17 09:39:40.295] [spdlog] [error] grpc build and start failed!
+[2022-11-17 09:39:40.295] [spdlog] [info] grpc server start wait!
+[2022-11-17 09:41:50.154] [spdlog] [info] init grpc server...
+[2022-11-17 09:41:50.154] [spdlog] [info] grpc listing port: 127.0.0.1:50051
+[2022-11-17 09:41:50.155] [spdlog] [info] grpc build and start successful!
+[2022-11-17 09:41:50.155] [spdlog] [info] grpc server start wait!
+[2022-11-17 09:42:47.581] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 09:42:52.447] [spdlog] [warning] grpc server shutdown!
+[2022-11-17 09:47:11.083] [spdlog] [info] init grpc server...
+[2022-11-17 09:47:11.084] [spdlog] [info] grpc listing port: 127.0.0.1:50051
+[2022-11-17 09:47:11.084] [spdlog] [info] grpc build and start successful!
+[2022-11-17 09:47:11.084] [spdlog] [info] grpc server start wait!
+[2022-11-17 09:47:13.799] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 09:47:18.116] [spdlog] [warning] grpc server shutdown!
+[2022-11-17 14:27:22.872] [spdlog] [info] init grpc server...
+[2022-11-17 14:27:22.879] [spdlog] [info] grpc listing port: 127.0.0.1:50051
+[2022-11-17 14:27:22.882] [spdlog] [info] grpc build and start successful!
+[2022-11-17 14:27:22.882] [spdlog] [info] grpc server start wait!
+[2022-11-17 14:27:27.780] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 14:29:26.436] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 14:29:31.052] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 14:31:15.047] [spdlog] [info] method(login): username = zby, password = 123456
+[2022-11-17 14:31:19.985] [spdlog] [warning] grpc server shutdown!
