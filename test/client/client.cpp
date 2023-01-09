@@ -47,11 +47,11 @@ int main() {
     );
 
     while(true) {
-        std::string id;
-        std::cin >> id;
+        std::string method, id;
+        std::cin >> method >> id;
         std::string str = json({
-            { "method", "genkey" },
-            { "device_id", id }
+            { "method", method },
+            { (method == "genkey" ? "device_id" : "key"), id }
         }).dump();
 
         std::cout << "Reply: \n" << ipcService->TestIPC(str) << std::endl;

@@ -64,3 +64,22 @@
 [2023-01-09 12:00:33.327] [spdlog] [info] method(genkey): device_id = vv
 [2023-01-09 12:00:35.131] [spdlog] [info] method(genkey): device_id = fafa
 [2023-01-09 12:00:43.329] [spdlog] [warning] grpc server shutdown!
+[2023-01-09 14:19:33.006] [spdlog] [info] init grpc server...
+[2023-01-09 14:19:33.006] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 14:19:33.008] [spdlog] [info] grpc build and start successful!
+[2023-01-09 14:19:33.008] [spdlog] [info] grpc server start wait!
+[2023-01-09 14:19:46.046] [spdlog] [warning] service request, no match method plugin!
+[2023-01-09 14:19:58.372] [spdlog] [info] method(req_live_stream): key = fjaofa
+[2023-01-09 14:26:15.106] [spdlog] [warning] grpc server shutdown!
+[2023-01-09 14:28:59.892] [spdlog] [info] init grpc server...
+[2023-01-09 14:28:59.893] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 14:28:59.894] [spdlog] [info] grpc build and start successful!
+[2023-01-09 14:28:59.894] [spdlog] [info] grpc server start wait!
+[2023-01-09 14:29:05.796] [spdlog] [warning] service request, no match method plugin!
+[2023-01-09 14:29:14.445] [spdlog] [info] method(req_live_stream): key = faoiji
+[2023-01-09 14:29:14.445] [spdlog] [warning] running error! method(req_live_stream) errMsg: does not exist key [faoiji]!
+[2023-01-09 14:29:47.878] [spdlog] [info] method(genkey): device_id = fiajfoaifmainaivaj
+[2023-01-09 14:29:56.560] [spdlog] [info] method(req_live_stream): key = fafafa
+[2023-01-09 14:29:56.560] [spdlog] [warning] running error! method(req_live_stream) errMsg: does not exist key [fafafa]!
+[2023-01-09 14:30:09.033] [spdlog] [info] method(req_live_stream): key = A2U52h
+[2023-01-09 14:30:21.922] [spdlog] [warning] grpc server shutdown!

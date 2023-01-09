@@ -54,7 +54,11 @@ struct GEN_KEY_INFO {
     std::string device_id;
 };
 
-using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO>;
+struct REQ_LIVE_STREAM_INFO {
+    std::string key;
+};
+
+using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, REQ_LIVE_STREAM_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {

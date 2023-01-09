@@ -29,7 +29,10 @@ void KeyManager::initRtmpInfo(ConfigNode _cfg) {
 }
 
 auto KeyManager::genRtmpUrl(const string & key) -> string {
-    string rtmp = fmt::format("rtmp://{}:{}/{}/{}", host, port, app, key);
+    lock_guard<mutex> guard(_mutex);
+    string rtmp;
+    if(_key_set.find(key) != _key_set.end())
+        rtmp = fmt::format("rtmp://{}:{}/{}/{}", host, port, app, key);
     return rtmp;
 }
 

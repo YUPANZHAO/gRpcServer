@@ -25,7 +25,8 @@ SOURCE = \
 	src/api/loginApiPlugin.cpp \
 	src/utils/KeyGenerator.cpp \
 	src/utils/KeyManager.cpp \
-	src/api/genKeyApiPlugin.cpp
+	src/api/genKeyApiPlugin.cpp \
+	src/api/reqLiveStreamApiPlugin.cpp
 	
 # 目标文件
 OBJS = $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(notdir $(SOURCE))))

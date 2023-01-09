@@ -7,6 +7,7 @@
 #include "genKeyApiPlugin.h"
 #include "KeyManager.h"
 #include "nlohmann/json.hpp"
+#include "reqLiveStreamApiPlugin.h"
 
 using nlohmann::json;
 
@@ -142,6 +143,7 @@ void ApiServer::ApiServerImpl::registerPlugins() {
     std::vector<IApiPluginPtr> plugins {
         std::make_shared<LoginApiPlugin>(),
         std::make_shared<GenKeyApiPlugin>(),
+        std::make_shared<ReqLiveStreamApiPlugin>(),
         // Add New Api Plugin
     };
     for (IApiPluginPtr plugin : plugins) {
