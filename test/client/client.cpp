@@ -43,16 +43,19 @@ private:
 int main() {
 
     auto ipcService = std::make_unique<IPCService>(
-        grpc::CreateChannel("127.0.0.1:50051", grpc::InsecureChannelCredentials())
+        grpc::CreateChannel("127.0.0.1:50052", grpc::InsecureChannelCredentials())
     );
 
-    std::string str = json({
-        { "method", "login" },
-        { "username", "zby" },
-        { "password", "123456" }
-    }).dump();
+    while(true) {
+        std::string id;
+        std::cin >> id;
+        std::string str = json({
+            { "method", "genkey" },
+            { "device_id", id }
+        }).dump();
 
-    std::cout << "Reply: \n" << ipcService->TestIPC(str) << std::endl;
+        std::cout << "Reply: \n" << ipcService->TestIPC(str) << std::endl;
+    }
 
     return 0;
 }

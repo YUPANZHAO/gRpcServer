@@ -1,0 +1,66 @@
+[2023-01-09 10:39:13.154] [spdlog] [info] init grpc server...
+[2023-01-09 10:39:13.154] [spdlog] [info] grpc listing port: 127.0.0.1:50051
+[2023-01-09 10:39:13.155] [spdlog] [info] grpc build and start successful!
+[2023-01-09 10:39:13.155] [spdlog] [info] grpc server start wait!
+[2023-01-09 10:39:16.409] [spdlog] [warning] grpc server shutdown!
+[2023-01-09 10:46:57.949] [spdlog] [info] init grpc server...
+[2023-01-09 10:46:57.949] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 10:46:57.950] [spdlog] [info] grpc build and start successful!
+[2023-01-09 10:46:57.950] [spdlog] [info] grpc server start wait!
+[2023-01-09 10:47:03.132] [spdlog] [warning] service request data error, can't find method!
+[2023-01-09 10:48:43.795] [spdlog] [info] method(genkey): device_id = abcd
+[2023-01-09 10:51:33.949] [spdlog] [info] init grpc server...
+[2023-01-09 10:51:33.949] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 10:51:33.950] [spdlog] [info] grpc build and start successful!
+[2023-01-09 10:51:33.950] [spdlog] [info] grpc server start wait!
+[2023-01-09 10:53:39.577] [spdlog] [info] method(genkey): device_id = abcd
+[2023-01-09 10:54:46.248] [spdlog] [info] init grpc server...
+[2023-01-09 10:54:46.248] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 10:54:46.249] [spdlog] [info] grpc build and start successful!
+[2023-01-09 10:54:46.249] [spdlog] [info] grpc server start wait!
+[2023-01-09 10:55:40.825] [spdlog] [info] method(genkey): device_id = aaa
+[2023-01-09 11:25:53.317] [spdlog] [info] init grpc server...
+[2023-01-09 11:25:53.317] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:25:53.318] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:25:53.318] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:26:12.316] [spdlog] [info] method(genkey): device_id = afafa
+[2023-01-09 11:36:40.359] [spdlog] [info] init grpc server...
+[2023-01-09 11:36:40.359] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:36:40.360] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:36:40.361] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:36:45.034] [spdlog] [info] method(genkey): device_id = aa
+[2023-01-09 11:37:25.829] [spdlog] [info] init grpc server...
+[2023-01-09 11:37:25.829] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:37:25.830] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:37:25.830] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:37:28.896] [spdlog] [info] method(genkey): device_id = ca
+[2023-01-09 11:46:42.793] [spdlog] [info] init grpc server...
+[2023-01-09 11:46:42.793] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:46:42.793] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:46:42.793] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:46:45.903] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 11:53:17.656] [spdlog] [info] init grpc server...
+[2023-01-09 11:53:17.656] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:53:17.657] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:53:17.657] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:53:21.815] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 11:55:18.715] [spdlog] [info] init grpc server...
+[2023-01-09 11:55:18.716] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:55:18.716] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:55:18.717] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:55:21.838] [spdlog] [info] method(genkey): device_id = faufa
+[2023-01-09 11:57:20.791] [spdlog] [info] init grpc server...
+[2023-01-09 11:57:20.791] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 11:57:20.792] [spdlog] [info] grpc build and start successful!
+[2023-01-09 11:57:20.792] [spdlog] [info] grpc server start wait!
+[2023-01-09 11:57:27.230] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 12:00:18.982] [spdlog] [info] init grpc server...
+[2023-01-09 12:00:18.982] [spdlog] [info] grpc listing port: 127.0.0.1:50052
+[2023-01-09 12:00:18.983] [spdlog] [info] grpc build and start successful!
+[2023-01-09 12:00:18.983] [spdlog] [info] grpc server start wait!
+[2023-01-09 12:00:22.640] [spdlog] [info] method(genkey): device_id = fajijf
+[2023-01-09 12:00:29.390] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 12:00:31.068] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 12:00:33.327] [spdlog] [info] method(genkey): device_id = vv
+[2023-01-09 12:00:35.131] [spdlog] [info] method(genkey): device_id = fafa
+[2023-01-09 12:00:43.329] [spdlog] [warning] grpc server shutdown!

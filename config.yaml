@@ -5,7 +5,12 @@ config:
         # 使用RPC库
         lib: grpc
         ip: 127.0.0.1
+        port: 50052
+
+    rtmp:
+        host: 172.24.10.135
         port: 50051
+        app: live
 
     # 日志配置
     log:

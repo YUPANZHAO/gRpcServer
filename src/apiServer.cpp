@@ -4,6 +4,8 @@
 #include "loggerManager.h"
 #include "yamlConfigDec.h"
 #include "loginApiPlugin.h"
+#include "genKeyApiPlugin.h"
+#include "KeyManager.h"
 #include "nlohmann/json.hpp"
 
 using nlohmann::json;
@@ -39,6 +41,7 @@ bool ApiServer::ApiServerImpl::start() {
     if(initLogger() == false) return false;
     registerPlugins();
     if(startRpcServer() == false) return false;
+    KeyManager::getInstance()->initRtmpInfo(_config["rtmp"]);
     return true;
 }
 
@@ -138,6 +141,7 @@ bool ApiServer::ApiServerImpl::initLogger() {
 void ApiServer::ApiServerImpl::registerPlugins() {
     std::vector<IApiPluginPtr> plugins {
         std::make_shared<LoginApiPlugin>(),
+        std::make_shared<GenKeyApiPlugin>(),
         // Add New Api Plugin
     };
     for (IApiPluginPtr plugin : plugins) {

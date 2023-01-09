@@ -1,5 +1,5 @@
 # 编译参数
-CC = g++
+CC = g++ -g
 CFLAGS = -std=c++17
 INCLUDE = -I./include
 LIBS = -L./libs -lspdlog -lyaml-cpp
@@ -22,7 +22,10 @@ SOURCE = \
 	src/logger/spdLogger.cpp \
 	src/logger/loggerManager.cpp \
 	src/config/yamlConfigDec.cpp \
-	src/api/loginApiPlugin.cpp
+	src/api/loginApiPlugin.cpp \
+	src/utils/KeyGenerator.cpp \
+	src/utils/KeyManager.cpp \
+	src/api/genKeyApiPlugin.cpp
 	
 # 目标文件
 OBJS = $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(notdir $(SOURCE))))
@@ -37,7 +40,7 @@ server: $(OBJS)
 $(OBJS) : $(SOURCE)
 	$(CC) -c $^ $(ALLFLAGS)
 
-.PHONY = clean
+.PHONY: clean
 clean:
 	-rm -r *.o
 	-rm -r $(BUILD_DIR)

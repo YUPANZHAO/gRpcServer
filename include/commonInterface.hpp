@@ -50,7 +50,11 @@ struct LOGIN_INFO {
     std::string password;
 };
 
-using ApiRequest = std::variant<LOGIN_INFO>;
+struct GEN_KEY_INFO {
+    std::string device_id;
+};
+
+using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {
