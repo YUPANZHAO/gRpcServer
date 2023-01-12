@@ -1,0 +1,40 @@
+[2023-01-11 15:42:46.240] [spdlog] [info] init grpc server...
+[2023-01-11 15:42:46.241] [spdlog] [info] grpc listing port: 172.24.10.121:50052
+[2023-01-11 15:42:46.272] [spdlog] [error] grpc build and start failed!
+[2023-01-11 15:42:46.272] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:46:26.554] [spdlog] [info] init grpc server...
+[2023-01-11 15:46:26.569] [spdlog] [info] grpc listing port: 172.24.10.121:50052
+[2023-01-11 15:46:26.724] [spdlog] [error] grpc build and start failed!
+[2023-01-11 15:46:26.724] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:49:46.179] [spdlog] [info] init grpc server...
+[2023-01-11 15:49:46.179] [spdlog] [info] grpc listing port: 172.24.10.121:50052
+[2023-01-11 15:49:46.180] [spdlog] [error] grpc build and start failed!
+[2023-01-11 15:49:46.180] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:50:13.923] [spdlog] [info] init grpc server...
+[2023-01-11 15:50:13.923] [spdlog] [info] grpc listing port: 172.24.10.121:50053
+[2023-01-11 15:50:13.924] [spdlog] [error] grpc build and start failed!
+[2023-01-11 15:50:13.924] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:56:02.095] [spdlog] [info] init grpc server...
+[2023-01-11 15:56:02.096] [spdlog] [info] grpc listing port: 172.24.10.121:50052
+[2023-01-11 15:56:02.097] [spdlog] [error] grpc build and start failed!
+[2023-01-11 15:56:02.097] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:56:35.754] [spdlog] [info] init grpc server...
+[2023-01-11 15:56:35.754] [spdlog] [info] grpc listing port: 172.17.129.194:50052
+[2023-01-11 15:56:35.754] [spdlog] [info] grpc build and start successful!
+[2023-01-11 15:56:35.755] [spdlog] [info] grpc server start wait!
+[2023-01-11 15:57:50.707] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 15:58:43.014] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 16:02:24.398] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 16:03:53.912] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 16:04:45.637] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 16:05:08.538] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 16:12:13.429] [spdlog] [warning] grpc server shutdown!
+[2023-01-11 22:39:00.139] [spdlog] [info] init grpc server...
+[2023-01-11 22:39:00.152] [spdlog] [info] grpc listing port: 172.30.195.102:50052
+[2023-01-11 22:39:00.156] [spdlog] [info] grpc build and start successful!
+[2023-01-11 22:39:00.156] [spdlog] [info] grpc server start wait!
+[2023-01-11 22:39:03.918] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 22:41:04.765] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 22:41:15.124] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 22:43:23.464] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-11 22:44:01.023] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05

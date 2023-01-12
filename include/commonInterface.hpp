@@ -6,6 +6,7 @@
 #include <map>
 #include <mutex>
 #include <variant>
+#include <optional>
 #include <list>
 #include "yamlConfigDec.h"
 
@@ -54,11 +55,11 @@ struct GEN_KEY_INFO {
     std::string device_id;
 };
 
-struct REQ_LIVE_STREAM_INFO {
+struct GET_DEVICE_INFO {
     std::string key;
 };
 
-using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, REQ_LIVE_STREAM_INFO>;
+using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {
@@ -69,3 +70,11 @@ public:
     virtual auto process(const ApiRequest &) -> ApiReply = 0;
 };
 using IApiPluginPtr = std::shared_ptr<IApiPlugin>;
+
+struct DeviceInfo {
+    std::string name;
+    std::string device_id;
+    std::string key;
+    std::string rtmp_url;
+};
+using DeviceInfoPtr = std::shared_ptr<DeviceInfo>;

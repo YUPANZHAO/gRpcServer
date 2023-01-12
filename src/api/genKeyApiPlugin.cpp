@@ -1,7 +1,7 @@
 #include "genKeyApiPlugin.h"
 #include "loggerManager.h"
 #include "nlohmann/json.hpp"
-#include "KeyManager.h"
+#include "DeviceManager.h"
 
 using nlohmann::json;
 
@@ -30,12 +30,11 @@ auto GenKeyApiPlugin::process(const ApiRequest & req) -> ApiReply {
     auto info = std::get<GEN_KEY_INFO>(req);
     Info(GLOBAL_LOG, "method({}): device_id = {}", method(), info.device_id);
 
-    std::string key = KeyManager::getInstance()->generator(info.device_id);
-    std::string rtmp = KeyManager::getInstance()->genRtmpUrl(key);
+    auto device = DeviceManager::getInstance()->addDevice(info.device_id);
     
     std::string msg(json({
-        { "key", key },
-        { "url", rtmp }
+        { "key", (*device)->key },
+        { "url", (*device)->rtmp_url }
     }).dump());
     
     return { std::nullopt, msg };

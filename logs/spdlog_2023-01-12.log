@@ -1,0 +1,112 @@
+[2023-01-12 09:37:42.406] [spdlog] [info] init grpc server...
+[2023-01-12 09:37:42.406] [spdlog] [info] grpc listing port: 172.30.206.63:50052
+[2023-01-12 09:37:42.411] [spdlog] [info] grpc build and start successful!
+[2023-01-12 09:37:42.411] [spdlog] [info] grpc server start wait!
+[2023-01-12 09:39:08.536] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 09:39:20.710] [spdlog] [warning] method(req_live_stream): json parse failed!
+[2023-01-12 09:39:20.710] [spdlog] [warning] json parser failed! method: req_live_stream
+[2023-01-12 09:40:49.282] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 09:41:02.349] [spdlog] [warning] method(req_live_stream): json parse failed!
+[2023-01-12 09:41:02.349] [spdlog] [warning] json parser failed! method: req_live_stream
+[2023-01-12 09:43:22.075] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:45:38.717] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:46:00.720] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:47:43.176] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:49:14.977] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:50:37.378] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:52:33.824] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:55:47.251] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 09:56:04.586] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:56:40.628] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:56:44.905] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:56:52.642] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:56:57.314] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 09:57:06.795] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 09:58:44.317] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 09:58:45.264] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 11:07:31.398] [spdlog] [info] method(req_live_stream): key = fauhfa
+[2023-01-12 11:07:31.398] [spdlog] [warning] running error! method(req_live_stream) errMsg: does not exist key [fauhfa]!
+[2023-01-12 11:09:46.502] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 11:09:57.718] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 11:10:28.708] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 11:11:59.896] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 11:20:31.913] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 11:21:34.525] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 11:21:41.100] [spdlog] [info] method(req_live_stream): key = 1A2U52
+[2023-01-12 14:56:06.110] [spdlog] [warning] grpc server shutdown!
+[2023-01-12 15:02:17.770] [spdlog] [info] init grpc server...
+[2023-01-12 15:02:17.770] [spdlog] [info] grpc listing port: 172.30.206.63:50052
+[2023-01-12 15:02:17.771] [spdlog] [info] grpc build and start successful!
+[2023-01-12 15:02:17.771] [spdlog] [info] grpc server start wait!
+[2023-01-12 16:00:41.918] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 16:00:41.918] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [1A2U52]!
+[2023-01-12 16:01:00.597] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 16:01:00.597] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [1A2U52]!
+[2023-01-12 16:01:17.619] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:02:09.158] [spdlog] [info] method(get_device_info): key = 2U52hK
+[2023-01-12 16:03:56.352] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:04:24.752] [spdlog] [info] method(get_device_info): key = 402481
+[2023-01-12 16:06:44.513] [spdlog] [info] method(get_device_info): key = 402481
+[2023-01-12 16:08:20.980] [spdlog] [info] method(get_device_info): key = 402481
+[2023-01-12 16:09:26.221] [spdlog] [info] method(get_device_info): key = 402451
+[2023-01-12 16:09:26.221] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [402451]!
+[2023-01-12 16:09:34.253] [spdlog] [info] method(get_device_info): key = 402481
+[2023-01-12 16:10:16.642] [spdlog] [info] method(get_device_info): key = 402481
+[2023-01-12 16:10:44.174] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:10:52.869] [spdlog] [info] method(get_device_info): key = J36182
+[2023-01-12 16:12:15.520] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:12:32.628] [spdlog] [info] method(get_device_info): key = 692D3M
+[2023-01-12 16:12:41.621] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:13:00.689] [spdlog] [info] method(get_device_info): key = 6JXB5w
+[2023-01-12 16:14:40.439] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:14:50.563] [spdlog] [info] method(get_device_info): key = b02Z16
+[2023-01-12 16:15:08.089] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:15:17.138] [spdlog] [info] method(get_device_info): key = E30dQl
+[2023-01-12 16:15:17.138] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [E30dQl]!
+[2023-01-12 16:15:27.370] [spdlog] [info] method(get_device_info): key = E30dQI
+[2023-01-12 16:18:02.177] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:18:15.785] [spdlog] [info] method(get_device_info): key = 1cG5OQ
+[2023-01-12 16:18:34.868] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:18:44.905] [spdlog] [info] method(get_device_info): key = 95A550
+[2023-01-12 16:19:18.466] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:19:30.033] [spdlog] [info] method(get_device_info): key = 53ox0h
+[2023-01-12 16:19:48.587] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:19:53.384] [spdlog] [info] method(get_device_info): key = 4421pv
+[2023-01-12 16:20:07.083] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:20:16.467] [spdlog] [info] method(get_device_info): key = 6x0650
+[2023-01-12 16:20:26.427] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:20:31.673] [spdlog] [info] method(get_device_info): key = 4044KA
+[2023-01-12 16:24:25.201] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:24:37.908] [spdlog] [info] method(get_device_info): key = pfIDc5
+[2023-01-12 16:24:37.908] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [pfIDc5]!
+[2023-01-12 16:24:44.919] [spdlog] [info] method(get_device_info): key = pflDc5
+[2023-01-12 16:25:11.395] [spdlog] [info] method(get_device_info): key = pflDc5
+[2023-01-12 16:25:23.019] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:25:29.592] [spdlog] [info] method(get_device_info): key = 4qM3Ls
+[2023-01-12 16:25:29.592] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [4qM3Ls]!
+[2023-01-12 16:25:36.801] [spdlog] [info] method(get_device_info): key = 4qM3LS
+[2023-01-12 16:25:46.250] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:25:52.067] [spdlog] [info] method(get_device_info): key = 2B13aG
+[2023-01-12 16:26:05.158] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:26:14.121] [spdlog] [info] method(get_device_info): key = F222as
+[2023-01-12 16:26:27.587] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:26:38.976] [spdlog] [info] method(get_device_info): key = zV787q
+[2023-01-12 16:26:51.743] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:26:59.856] [spdlog] [info] method(get_device_info): key = zXf26X
+[2023-01-12 16:35:18.978] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:35:27.591] [spdlog] [info] method(get_device_info): key = 2E84cz
+[2023-01-12 16:37:51.111] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:37:56.871] [spdlog] [info] method(get_device_info): key = 7Cd0br
+[2023-01-12 16:44:54.837] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:45:02.178] [spdlog] [info] method(get_device_info): key = e142Z8
+[2023-01-12 16:45:17.067] [spdlog] [info] method(get_device_info): key = e142Z8
+[2023-01-12 16:45:25.783] [spdlog] [info] method(get_device_info): key = e142Z8
+[2023-01-12 16:46:00.315] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:46:07.555] [spdlog] [info] method(get_device_info): key = x418G4
+[2023-01-12 16:46:16.696] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:46:23.980] [spdlog] [info] method(get_device_info): key = J2E6h5
+[2023-01-12 16:46:34.785] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:46:41.513] [spdlog] [info] method(get_device_info): key = kKkp64
+[2023-01-12 16:47:00.677] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 16:47:06.138] [spdlog] [info] method(get_device_info): key = 3gm2oe
+[2023-01-12 16:49:00.690] [spdlog] [warning] grpc server shutdown!

@@ -5,9 +5,9 @@
 #include "yamlConfigDec.h"
 #include "loginApiPlugin.h"
 #include "genKeyApiPlugin.h"
-#include "KeyManager.h"
+#include "DeviceManager.h"
 #include "nlohmann/json.hpp"
-#include "reqLiveStreamApiPlugin.h"
+#include "getDeviceInfoApiPlugin.h"
 
 using nlohmann::json;
 
@@ -42,7 +42,7 @@ bool ApiServer::ApiServerImpl::start() {
     if(initLogger() == false) return false;
     registerPlugins();
     if(startRpcServer() == false) return false;
-    KeyManager::getInstance()->initRtmpInfo(_config["rtmp"]);
+    DeviceManager::getInstance()->init(_config["rtmp"]);
     return true;
 }
 
@@ -143,7 +143,7 @@ void ApiServer::ApiServerImpl::registerPlugins() {
     std::vector<IApiPluginPtr> plugins {
         std::make_shared<LoginApiPlugin>(),
         std::make_shared<GenKeyApiPlugin>(),
-        std::make_shared<ReqLiveStreamApiPlugin>(),
+        std::make_shared<GetDeviceInfoApiPlugin>(),
         // Add New Api Plugin
     };
     for (IApiPluginPtr plugin : plugins) {

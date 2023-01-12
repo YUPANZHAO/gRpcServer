@@ -43,7 +43,7 @@ private:
 int main() {
 
     auto ipcService = std::make_unique<IPCService>(
-        grpc::CreateChannel("127.0.0.1:50052", grpc::InsecureChannelCredentials())
+        grpc::CreateChannel("192.168.43.59:50052", grpc::InsecureChannelCredentials())
     );
 
     while(true) {

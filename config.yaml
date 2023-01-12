@@ -4,11 +4,11 @@ config:
     api:
         # 使用RPC库
         lib: grpc
-        ip: 127.0.0.1
+        ip: 172.30.206.63
         port: 50052
 
     rtmp:
-        host: 172.24.10.135
+        host: 192.168.43.59
         port: 50051
         app: live
 

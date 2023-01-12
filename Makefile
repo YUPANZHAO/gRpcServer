@@ -24,9 +24,9 @@ SOURCE = \
 	src/config/yamlConfigDec.cpp \
 	src/api/loginApiPlugin.cpp \
 	src/utils/KeyGenerator.cpp \
-	src/utils/KeyManager.cpp \
+	src/utils/DeviceManager.cpp \
 	src/api/genKeyApiPlugin.cpp \
-	src/api/reqLiveStreamApiPlugin.cpp
+	src/api/getDeviceInfoApiPlugin.cpp
 	
 # 目标文件
 OBJS = $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(notdir $(SOURCE))))
