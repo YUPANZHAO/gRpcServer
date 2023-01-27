@@ -8,6 +8,7 @@
 #include <variant>
 #include <optional>
 #include <list>
+#include <tuple>
 #include "yamlConfigDec.h"
 
 using ServiceFunc = std::function<std::string(const std::string&)>;
@@ -59,7 +60,21 @@ struct GET_DEVICE_INFO {
     std::string key;
 };
 
-using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO>;
+struct TALK_CTRL_INFO {
+    std::string ctrl_type;
+    std::string device_key;
+};
+
+struct MSG_CB_INFO {
+    std::string id;
+};
+
+struct DEVICE_QUIT_INFO {
+    std::string id;
+};
+
+using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO, TALK_CTRL_INFO,
+                                MSG_CB_INFO, DEVICE_QUIT_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {
@@ -72,9 +87,12 @@ public:
 using IApiPluginPtr = std::shared_ptr<IApiPlugin>;
 
 struct DeviceInfo {
+    // 固定信息
     std::string name;
     std::string device_id;
     std::string key;
     std::string rtmp_url;
+    // 动态信息
+    bool is_talking;
 };
 using DeviceInfoPtr = std::shared_ptr<DeviceInfo>;

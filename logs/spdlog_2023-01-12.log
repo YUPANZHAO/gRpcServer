@@ -110,3 +110,71 @@
 [2023-01-12 16:47:00.677] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
 [2023-01-12 16:47:06.138] [spdlog] [info] method(get_device_info): key = 3gm2oe
 [2023-01-12 16:49:00.690] [spdlog] [warning] grpc server shutdown!
+[2023-01-12 17:21:32.843] [spdlog] [info] init grpc server...
+[2023-01-12 17:21:32.843] [spdlog] [info] grpc listing port: 172.30.206.63:50052
+[2023-01-12 17:21:32.844] [spdlog] [info] grpc build and start successful!
+[2023-01-12 17:21:32.844] [spdlog] [info] grpc server start wait!
+[2023-01-12 17:21:44.498] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 17:22:02.174] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:22:17.179] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:23:05.050] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:23:19.330] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 17:23:27.678] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 17:23:39.792] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:23:44.580] [spdlog] [info] method(get_device_info): key = 1A2u52
+[2023-01-12 17:23:44.580] [spdlog] [warning] running error! method(get_device_info) errMsg: does not exist device [1A2u52]!
+[2023-01-12 17:23:50.401] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:23:55.574] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:09.354] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:20.057] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:22.093] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:24.881] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:26.791] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 17:26:27.798] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 17:34:41.088] [spdlog] [warning] grpc server shutdown!
+[2023-01-12 20:53:06.893] [spdlog] [info] init grpc server...
+[2023-01-12 20:53:06.899] [spdlog] [info] grpc listing port: 172.30.203.220:50052
+[2023-01-12 20:53:06.918] [spdlog] [info] grpc build and start successful!
+[2023-01-12 20:53:06.918] [spdlog] [info] grpc server start wait!
+[2023-01-12 20:54:15.503] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 20:54:37.234] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 20:55:10.262] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:06:21.328] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 22:06:28.287] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:08:42.124] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:09:05.411] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:11:26.096] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:11:59.598] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:12:42.015] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:14:06.174] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:15:25.258] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:17:11.509] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:18:55.185] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:23:46.183] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:24:28.951] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-12 22:24:44.147] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:25:41.927] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:29:01.663] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:29:59.888] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:31:20.184] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:32:51.565] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:32:55.489] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:33:05.148] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:33:07.645] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:33:10.410] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:35:12.312] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:35:20.761] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:35:23.119] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:35:24.952] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:35:26.893] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:38:03.565] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:38:12.185] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:39:52.580] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:39:55.928] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:41:08.009] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:41:11.460] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:41:30.216] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:41:33.799] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:41:37.088] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:43:33.489] [spdlog] [info] method(get_device_info): key = 1A2U52
+[2023-01-12 22:48:41.888] [spdlog] [warning] grpc server shutdown!

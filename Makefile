@@ -26,7 +26,10 @@ SOURCE = \
 	src/utils/KeyGenerator.cpp \
 	src/utils/DeviceManager.cpp \
 	src/api/genKeyApiPlugin.cpp \
-	src/api/getDeviceInfoApiPlugin.cpp
+	src/api/getDeviceInfoApiPlugin.cpp \
+	src/api/msgCBApiPlugin.cpp \
+	src/api/talkCtrlApiPlugin.cpp \
+	src/api/deviceQuitApiPlugin.cpp
 	
 # 目标文件
 OBJS = $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(notdir $(SOURCE))))

@@ -3,12 +3,16 @@
 #include "KeyGenerator.h"
 #include <map>
 #include <mutex>
+#include <memory>
 #include <set>
 #include "spdlog/fmt/fmt.h"
 #include "yamlConfigDec.h"
 #include "commonInterface.hpp"
+#include "MessageQueue.h"
+#include "nlohmann/json.hpp"
 
 using namespace std;
+using nlohmann::json;
 
 class DeviceManager {
 public:
@@ -20,6 +24,14 @@ public:
 
     auto addDevice(const string & id) -> optional<DeviceInfoPtr>;
     auto deviceInfo(const string & key) -> optional<DeviceInfoPtr>;
+
+    bool talkAble(const string & key);
+    auto talkStart(const string & key) -> optional<string>;
+    void talkStop(const string & key);
+
+    void initMsgQuePtr(shared_ptr<MessageQueue<string>> p);
+
+    void setDeviceQuit(const string & key);
 
 private:
     DeviceManager();
@@ -36,4 +48,6 @@ private:
     string host;
     int port;
     string app;
+
+    shared_ptr<MessageQueue<string>> _msgQue;
 };

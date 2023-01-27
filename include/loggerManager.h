@@ -78,3 +78,34 @@ inline void Critical(LoggerName name, FormatType fmt, Args... args) {
     LoggerPtr logger = manager->getLogger(name);
     if(logger != nullptr) manager->critical(logger, fmt, args...);
 }
+
+template<>
+inline void Info(LoggerName name, LogMessage str) {
+    LoggerManager* manager = LoggerManager::getInstance();
+    LoggerPtr logger = manager->getLogger(name);
+    if(logger != nullptr) manager->info(logger, "{}", str);
+}
+template<>
+inline void Error(LoggerName name, LogMessage str) {
+    LoggerManager* manager = LoggerManager::getInstance();
+    LoggerPtr logger = manager->getLogger(name);
+    if(logger != nullptr) manager->error(logger, "{}", str);
+}
+template<>
+inline void Debug(LoggerName name, LogMessage str) {
+    LoggerManager* manager = LoggerManager::getInstance();
+    LoggerPtr logger = manager->getLogger(name);
+    if(logger != nullptr) manager->debug(logger, "{}", str);
+}
+template<>
+inline void Warn(LoggerName name, LogMessage str) {
+    LoggerManager* manager = LoggerManager::getInstance();
+    LoggerPtr logger = manager->getLogger(name);
+    if(logger != nullptr) manager->warn(logger, "{}", str);
+}
+template<>
+inline void Critical(LoggerName name, LogMessage str) {
+    LoggerManager* manager = LoggerManager::getInstance();
+    LoggerPtr logger = manager->getLogger(name);
+    if(logger != nullptr) manager->critical(logger, "{}", str);
+}

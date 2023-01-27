@@ -8,6 +8,10 @@
 #include "DeviceManager.h"
 #include "nlohmann/json.hpp"
 #include "getDeviceInfoApiPlugin.h"
+#include "MessageQueue.h"
+#include "msgCBApiPlugin.h"
+#include "talkCtrlApiPlugin.h"
+#include "deviceQuitApiPlugin.h"
 
 using nlohmann::json;
 
@@ -22,6 +26,7 @@ struct ApiServer::ApiServerImpl {
     static void handle_shutdown(int);
 
     auto handle_service_request(const std::string&) -> std::string;
+    auto handle_message_callback(const std::string&) -> std::string;
 
     bool loadConfigFile(const std::string &);
     bool initLogger();
@@ -33,6 +38,7 @@ struct ApiServer::ApiServerImpl {
     std::unique_ptr<YamlConfigDec> _configDec_ptr;
     ConfigNode _config;
     std::map<ApiName, IApiPluginPtr> _plugin_map;
+    MessageQueue<std::string> _msgQue;
 };
 
 ApiServer::ApiServerImpl::~ApiServerImpl() = default;
@@ -43,6 +49,9 @@ bool ApiServer::ApiServerImpl::start() {
     registerPlugins();
     if(startRpcServer() == false) return false;
     DeviceManager::getInstance()->init(_config["rtmp"]);
+    DeviceManager::getInstance()->initMsgQuePtr(
+        shared_ptr<MessageQueue<std::string>>(&_msgQue)
+    );
     return true;
 }
 
@@ -111,12 +120,25 @@ auto ApiServer::ApiServerImpl::handle_service_request(const std::string& json_da
         }).dump();
     }
     
+    if(method == "message_callback" && reply == "") return "";
+
     Debug(GLOBAL_LOG, "service reply data:\r\n{}", reply);
     return json({
         { "code", 200 },
         { "msg", "OK" },
-        { "reply", json::parse(reply) }
+        { "reply", reply == "" ? "" : json::parse(reply) }
     }).dump();
+}
+
+auto ApiServer::ApiServerImpl::handle_message_callback(const std::string & id) -> std::string {
+    auto ret = _msgQue.get([id](const std::string & item) -> bool {
+        json data = json::parse(item);
+        return data["id"] == id;
+    });
+    json data = json::parse(*ret);
+    if(data["operation"] == "close msg cb") ret = std::nullopt;
+    if(ret == std::nullopt) return "";
+    return (*ret);
 }
 
 bool ApiServer::ApiServerImpl::loadConfigFile(const std::string & filename) {
@@ -144,6 +166,11 @@ void ApiServer::ApiServerImpl::registerPlugins() {
         std::make_shared<LoginApiPlugin>(),
         std::make_shared<GenKeyApiPlugin>(),
         std::make_shared<GetDeviceInfoApiPlugin>(),
+        std::make_shared<TalkCtrlApiPlugin>(),
+        std::make_shared<MsgCBApiPlugin>([this](const std::string & params) -> std::string {
+            return this->handle_message_callback(params);
+        }),
+        std::make_shared<DeviceQuitApiPlugin>(),
         // Add New Api Plugin
     };
     for (IApiPluginPtr plugin : plugins) {

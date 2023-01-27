@@ -26,7 +26,9 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         info->device_id = id;
         info->rtmp_url = genRtmpUrl(key);
         info->key = key;
+        info->is_talking = false;
         ret = _key_map[key] = info;
+        _id_map[id] = key;
     }else {
         ret = _key_map[_id_map[id]];
     }
@@ -45,4 +47,42 @@ DeviceManager::DeviceManager() {
 
 auto DeviceManager::genRtmpUrl(const string & key) -> string {
     return fmt::format("rtmp://{}:{}/{}/{}", host, port, app, key);
+}
+
+bool DeviceManager::talkAble(const string & key) {
+    if(_key_map.find(key) == _key_map.end()) return false;
+    return !_key_map[key]->is_talking;
+}
+
+auto DeviceManager::talkStart(const string & key) -> optional<string> {
+    if(!talkAble(key)) return nullopt;
+    _key_map[key]->is_talking = true;
+    string rtmp_push_url = _key_map[key]->rtmp_url + "TALK";
+    _msgQue->add(json({
+        { "id", key },
+        { "operation", "talkStart" },
+        { "rtmp_pull_url", rtmp_push_url }
+    }).dump());
+    return rtmp_push_url; 
+}
+
+void DeviceManager::talkStop(const string & key) {
+    if(_key_map.find(key) == _key_map.end()) return;
+    _msgQue->add(json({
+        { "id", key },
+        { "operation", "talkStop" }
+    }).dump());
+    _key_map[key]->is_talking = false;
+}
+
+void DeviceManager::initMsgQuePtr(shared_ptr<MessageQueue<string>> p) {
+    _msgQue = p;
+}
+
+void DeviceManager::setDeviceQuit(const string & key) {
+    if(_key_map.find(key) == _key_map.end()) return;
+    _msgQue->add(json({
+        { "id", key },
+        { "operation", "close msg cb" }
+    }).dump());
 }
