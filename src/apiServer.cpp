@@ -12,6 +12,7 @@
 #include "msgCBApiPlugin.h"
 #include "talkCtrlApiPlugin.h"
 #include "deviceQuitApiPlugin.h"
+#include "heartBeatApiPlugin.h"
 
 using nlohmann::json;
 
@@ -52,6 +53,7 @@ bool ApiServer::ApiServerImpl::start() {
     DeviceManager::getInstance()->initMsgQuePtr(
         shared_ptr<MessageQueue<std::string>>(&_msgQue)
     );
+    DeviceManager::getInstance()->startHeartBeatHandleTimer();
     return true;
 }
 
@@ -171,6 +173,7 @@ void ApiServer::ApiServerImpl::registerPlugins() {
             return this->handle_message_callback(params);
         }),
         std::make_shared<DeviceQuitApiPlugin>(),
+        std::make_shared<HeartBeatApiPlugin>(),
         // Add New Api Plugin
     };
     for (IApiPluginPtr plugin : plugins) {

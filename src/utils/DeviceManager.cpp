@@ -27,6 +27,7 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         info->rtmp_url = genRtmpUrl(key);
         info->key = key;
         info->is_talking = false;
+        info->is_active = false;
         time(&info->last_active_time);
         ret = _key_map[key] = info;
         _id_map[id] = key;
@@ -92,4 +93,50 @@ void DeviceManager::heartBeat(const string & key) {
     if(_key_map.find(key) == _key_map.end()) return;
     auto device = _key_map[key];
     time(&device->last_active_time);
+}
+
+void DeviceManager::startHeartBeatHandleTimer() {
+    // 设置开启定时器
+    struct itimerval time_value;
+    time_value.it_interval.tv_sec = 4;
+    time_value.it_interval.tv_usec = 0;
+    time_value.it_value.tv_sec = 2;
+    time_value.it_value.tv_usec = 0;
+    int ret = setitimer(ITIMER_REAL, &time_value, NULL);
+    if(ret == -1) {
+        Error(GLOBAL_LOG, "开启心跳处理定时器失败!");
+        return;
+    }
+    // 设置定时器任务处理逻辑
+    struct sigaction action;
+    action.sa_handler = [](int sig) {
+        DeviceManager::getInstance()->heartBeatHandlerImpl();  
+    };
+    action.sa_flags = 0;
+    sigemptyset(&action.sa_mask);
+    action.sa_restorer = NULL;
+    // 启动定时器信号捕捉
+    ret = sigaction(SIGALRM, &action, NULL);
+    if(ret == -1) {
+        Error(GLOBAL_LOG, "开启心跳处理定时器失败!");
+        return;
+    }
+    Info(GLOBAL_LOG, "开启心跳定时器成功! 定时器将于2秒后开始运行...");
+}
+
+void DeviceManager::heartBeatHandlerImpl() {
+    time_t now = time(NULL);
+    for(auto & pair : _device_user_list) {
+        auto device = _key_map[pair.first];
+        bool is_active = (now - device->last_active_time) > 3 ? false : true;
+        if(!(is_active ^ device->is_active)) continue;
+        device->is_active = is_active;
+        for(auto & user : pair.second) {
+            _msgQue->add(json({
+                { "id", user },
+                { "operation", "device status change" },
+                { "device_status", is_active ? "active" : "negative" }
+            }).dump());
+        }
+    }
 }

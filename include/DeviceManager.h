@@ -11,6 +11,10 @@
 #include "MessageQueue.h"
 #include "nlohmann/json.hpp"
 #include <time.h>
+#include <signal.h>
+#include <sys/time.h>
+#include <stdlib.h>
+#include "loggerManager.h"
 
 using namespace std;
 using nlohmann::json;
@@ -35,6 +39,8 @@ public:
     void setDeviceQuit(const string & key);
 
     void heartBeat(const string & key);
+    void startHeartBeatHandleTimer();
+    void heartBeatHandlerImpl();
 
 private:
     DeviceManager();
@@ -53,4 +59,6 @@ private:
     string app;
 
     shared_ptr<MessageQueue<string>> _msgQue;
+
+    map<string,set<string>> _device_user_list;
 };

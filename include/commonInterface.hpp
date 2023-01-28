@@ -98,6 +98,7 @@ struct DeviceInfo {
     std::string rtmp_url;
     // 动态信息
     bool is_talking;
+    bool is_active;
     time_t last_active_time;
 };
 using DeviceInfoPtr = std::shared_ptr<DeviceInfo>;

@@ -29,7 +29,8 @@ SOURCE = \
 	src/api/getDeviceInfoApiPlugin.cpp \
 	src/api/msgCBApiPlugin.cpp \
 	src/api/talkCtrlApiPlugin.cpp \
-	src/api/deviceQuitApiPlugin.cpp
+	src/api/deviceQuitApiPlugin.cpp \
+	src/api/heartBeatApiPlugin.cpp \
 	
 # 目标文件
 OBJS = $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(notdir $(SOURCE))))
