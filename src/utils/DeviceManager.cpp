@@ -27,6 +27,7 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         info->rtmp_url = genRtmpUrl(key);
         info->key = key;
         info->is_talking = false;
+        time(&info->last_active_time);
         ret = _key_map[key] = info;
         _id_map[id] = key;
     }else {
@@ -85,4 +86,10 @@ void DeviceManager::setDeviceQuit(const string & key) {
         { "id", key },
         { "operation", "close msg cb" }
     }).dump());
+}
+
+void DeviceManager::heartBeat(const string & key) {
+    if(_key_map.find(key) == _key_map.end()) return;
+    auto device = _key_map[key];
+    time(&device->last_active_time);
 }

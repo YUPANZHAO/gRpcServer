@@ -4,7 +4,7 @@ config:
     api:
         # 使用RPC库
         lib: grpc
-        ip: 172.24.196.237
+        ip: 172.24.198.202
         port: 50052
 
     rtmp:

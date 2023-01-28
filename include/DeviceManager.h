@@ -10,6 +10,7 @@
 #include "commonInterface.hpp"
 #include "MessageQueue.h"
 #include "nlohmann/json.hpp"
+#include <time.h>
 
 using namespace std;
 using nlohmann::json;
@@ -32,6 +33,8 @@ public:
     void initMsgQuePtr(shared_ptr<MessageQueue<string>> p);
 
     void setDeviceQuit(const string & key);
+
+    void heartBeat(const string & key);
 
 private:
     DeviceManager();

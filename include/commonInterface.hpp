@@ -73,8 +73,12 @@ struct DEVICE_QUIT_INFO {
     std::string id;
 };
 
+struct HEART_BEAT_INFO {
+    std::string id;
+};
+
 using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO, TALK_CTRL_INFO,
-                                MSG_CB_INFO, DEVICE_QUIT_INFO>;
+                                MSG_CB_INFO, DEVICE_QUIT_INFO, HEART_BEAT_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {
@@ -94,5 +98,6 @@ struct DeviceInfo {
     std::string rtmp_url;
     // 动态信息
     bool is_talking;
+    time_t last_active_time;
 };
 using DeviceInfoPtr = std::shared_ptr<DeviceInfo>;
