@@ -61,7 +61,7 @@ auto DeviceManager::talkStart(const string & key) -> optional<string> {
     if(!talkAble(key)) return nullopt;
     _key_map[key]->is_talking = true;
     string rtmp_push_url = _key_map[key]->rtmp_url + "TALK";
-    _msgQue->add(json({
+    _msgQue->add(key, json({
         { "id", key },
         { "operation", "talkStart" },
         { "rtmp_pull_url", rtmp_push_url }
@@ -71,7 +71,7 @@ auto DeviceManager::talkStart(const string & key) -> optional<string> {
 
 void DeviceManager::talkStop(const string & key) {
     if(_key_map.find(key) == _key_map.end()) return;
-    _msgQue->add(json({
+    _msgQue->add(key, json({
         { "id", key },
         { "operation", "talkStop" }
     }).dump());
@@ -84,7 +84,7 @@ void DeviceManager::initMsgQuePtr(shared_ptr<MessageQueue<string>> p) {
 
 void DeviceManager::setDeviceQuit(const string & key) {
     if(_key_map.find(key) == _key_map.end()) return;
-    _msgQue->add(json({
+    _msgQue->add(key, json({
         { "id", key },
         { "operation", "close msg cb" }
     }).dump());
@@ -135,7 +135,7 @@ void DeviceManager::heartBeatHandlerImpl() {
         device->is_active = is_active;
         Info("设备({})状态变化 is_active: {} ---> {}", device->key, device->is_active, is_active);
         for(auto & user : pair.second) {
-            _msgQue->add(json({
+            _msgQue->add(user, json({
                 { "id", user },
                 { "operation", "device status change" },
                 { "device_id", device->key },

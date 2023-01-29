@@ -548,3 +548,95 @@
 [2023-01-29 11:29:49.849] [spdlog] [info] 回调数据发送成功
 [2023-01-29 11:29:49.850] [spdlog] [info] method(message_callback): id = client
 [2023-01-29 11:29:51.019] [spdlog] [warning] grpc server shutdown!
+[2023-01-29 13:43:15.239] [spdlog] [info] init grpc server...
+[2023-01-29 13:43:15.239] [spdlog] [info] grpc listing port: 172.24.201.184:50052
+[2023-01-29 13:43:15.240] [spdlog] [info] grpc build and start successful!
+[2023-01-29 13:43:15.240] [spdlog] [info] 开启心跳定时器成功! 定时器将于2秒后开始运行...
+[2023-01-29 13:43:15.240] [spdlog] [info] grpc server start wait!
+[2023-01-29 13:43:27.306] [spdlog] [info] method(genkey): device_id = 1e2158d6c307ad05
+[2023-01-29 13:43:28.793] [spdlog] [info] 客户端回调开启 {"id":"client","method":"message_callback"}
+[2023-01-29 13:43:28.793] [spdlog] [info] method(message_callback): id = client
+[2023-01-29 13:43:29.354] [spdlog] [info] 客户端回调开启 {"method":"message_callback","id":"1A2U52"}
+[2023-01-29 13:43:29.354] [spdlog] [info] method(message_callback): id = 1A2U52
+[2023-01-29 13:43:29.360] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:30.419] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:31.490] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:32.586] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:33.668] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:34.760] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:35.848] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:36.940] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:38.020] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:39.097] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:40.170] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:41.251] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:42.340] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:43.293] [spdlog] [info] method(get_device_info): user = client, key = 1A2U52
+[2023-01-29 13:43:43.429] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:44.528] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:45.241] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"device_id":"1A2U52","device_status":"active","id":"client","operation":"device status change"}}
+[2023-01-29 13:43:45.241] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:43:45.241] [spdlog] [info] method(message_callback): id = client
+[2023-01-29 13:43:45.624] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:46.704] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:47.841] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:48.930] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:50.030] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:51.117] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:52.208] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:53.304] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:54.385] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:55.462] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:56.549] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:57.633] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:58.713] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:43:59.802] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:00.886] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:02.001] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:02.097] [spdlog] [info] method(talk_ctrl): ctrl_type = start, device_key = 1A2U52
+[2023-01-29 13:44:02.097] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"id":"1A2U52","operation":"talkStart","rtmp_pull_url":"rtmp://192.168.0.107:50051/live/1A2U52TALK"}}
+[2023-01-29 13:44:02.098] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:44:02.098] [spdlog] [info] method(message_callback): id = 1A2U52
+[2023-01-29 13:44:03.078] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:04.181] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:05.266] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:06.335] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:07.419] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:08.489] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:09.590] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:10.663] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:11.745] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:12.818] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:13.901] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:14.984] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:16.080] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:16.412] [spdlog] [info] method(talk_ctrl): ctrl_type = stop, device_key = 1A2U52
+[2023-01-29 13:44:16.413] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"id":"1A2U52","operation":"talkStop"}}
+[2023-01-29 13:44:16.413] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:44:16.413] [spdlog] [info] method(message_callback): id = 1A2U52
+[2023-01-29 13:44:17.168] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:18.253] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:19.345] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:20.407] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:20.474] [spdlog] [info] method(talk_ctrl): ctrl_type = start, device_key = 1A2U52
+[2023-01-29 13:44:20.475] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"id":"1A2U52","operation":"talkStart","rtmp_pull_url":"rtmp://192.168.0.107:50051/live/1A2U52TALK"}}
+[2023-01-29 13:44:20.475] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:44:20.475] [spdlog] [info] method(message_callback): id = 1A2U52
+[2023-01-29 13:44:21.480] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:22.547] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:23.635] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:23.743] [spdlog] [info] method(talk_ctrl): ctrl_type = stop, device_key = 1A2U52
+[2023-01-29 13:44:23.744] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"id":"1A2U52","operation":"talkStop"}}
+[2023-01-29 13:44:23.744] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:44:23.744] [spdlog] [info] method(message_callback): id = 1A2U52
+[2023-01-29 13:44:24.708] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:25.779] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:26.851] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:27.929] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:29.026] [spdlog] [info] method(heart_beat): id = 1A2U52
+[2023-01-29 13:44:29.137] [spdlog] [info] method(device_quit): id = 1A2U52
+[2023-01-29 13:44:29.138] [spdlog] [info] 回调线程结束
+[2023-01-29 13:44:33.241] [spdlog] [info] 获得一条回调数据 {"code":200,"msg":"OK","reply":{"device_id":"1A2U52","device_status":"negative","id":"client","operation":"device status change"}}
+[2023-01-29 13:44:33.242] [spdlog] [info] 回调数据发送成功
+[2023-01-29 13:44:33.242] [spdlog] [info] method(message_callback): id = client
+[2023-01-29 13:44:57.662] [spdlog] [warning] grpc server shutdown!

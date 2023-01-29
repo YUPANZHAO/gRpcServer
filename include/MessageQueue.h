@@ -7,6 +7,7 @@
 #include <functional>
 #include <optional>
 #include <map>
+#include <list>
 
 using namespace std;
 
@@ -23,25 +24,25 @@ public:
     }
 
     // 添加一条消息
-    void add(const Message & message) {
+    void add(const string & key, const Message & message) {
         {
             unique_lock<mutex> lock(_mutex);
-            _que.push(message);
+            _lists[key].push_back(message);
         }
         _cond.notify_all();
     }
 
     // 获取一条消息
-    auto get(MatchFunc is_match) -> optional<Message> {
+    auto get(const string & key) -> optional<Message> {
         optional<Message> ret = nullopt;
         {
             unique_lock<mutex> lock(_mutex);
-            while(!is_shutdown && (_que.empty() || !is_match(_que.front()))) {
+            while(!is_shutdown && _lists[key].empty()) {
                 _cond.wait(lock);
             }
             if(!is_shutdown) {
-                ret = _que.front();
-                _que.pop();
+                ret = _lists[key].front();
+                _lists[key].pop_front();
             }
         }
         _cond.notify_all();
@@ -49,7 +50,7 @@ public:
     }
     
 private:
-    queue<Message> _que;
+    map<string, list<Message>> _lists;
     mutex _mutex;
     condition_variable _cond;
     bool is_shutdown;

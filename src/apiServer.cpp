@@ -133,10 +133,7 @@ auto ApiServer::ApiServerImpl::handle_service_request(const std::string& json_da
 }
 
 auto ApiServer::ApiServerImpl::handle_message_callback(const std::string & id) -> std::string {
-    auto ret = _msgQue.get([id](const std::string & item) -> bool {
-        json data = json::parse(item);
-        return data["id"] == id;
-    });
+    auto ret = _msgQue.get(id);
     json data = json::parse(*ret);
     if(data["operation"] == "close msg cb") ret = std::nullopt;
     if(ret == std::nullopt) return "";
