@@ -9,7 +9,6 @@ IPCReply* reply) {
     }
     std::string msg = _service_call(request->body());
     reply->set_body(msg);
-    Info(GLOBAL_LOG, "reply body: {}", msg);
     return Status::OK;
 }
 

@@ -133,10 +133,12 @@ void DeviceManager::heartBeatHandlerImpl() {
         bool is_active = (now - device->last_active_time) > 3 ? false : true;
         if(!(is_active ^ device->is_active)) continue;
         device->is_active = is_active;
+        Info("设备({})状态变化 is_active: {} ---> {}", device->key, device->is_active, is_active);
         for(auto & user : pair.second) {
             _msgQue->add(json({
                 { "id", user },
                 { "operation", "device status change" },
+                { "device_id", device->key },
                 { "device_status", is_active ? "active" : "negative" }
             }).dump());
         }
