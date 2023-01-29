@@ -37,9 +37,10 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
     return ret;
 }
 
-auto DeviceManager::deviceInfo(const string & key) -> optional<DeviceInfoPtr> {
+auto DeviceManager::deviceInfo(const string & user, const string & key) -> optional<DeviceInfoPtr> {
     lock_guard<mutex> guard(_mutex);
     if(_key_map.find(key) == _key_map.end()) return nullopt;
+    _device_user_list[key].insert(user);
     return _key_map[key];
 }
 
@@ -126,6 +127,7 @@ void DeviceManager::startHeartBeatHandleTimer() {
 
 void DeviceManager::heartBeatHandlerImpl() {
     time_t now = time(NULL);
+    lock_guard<mutex> guard(_mutex);
     for(auto & pair : _device_user_list) {
         auto device = _key_map[pair.first];
         bool is_active = (now - device->last_active_time) > 3 ? false : true;

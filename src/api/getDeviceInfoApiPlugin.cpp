@@ -17,6 +17,7 @@ auto GetDeviceInfoApiPlugin::json_parser(const std::string & data) -> std::optio
     GET_DEVICE_INFO info = {};
     auto json_data = json::parse(data);
     try {
+        info.user = json_data["user"];
         info.key = json_data["key"];
     }catch(std::exception&) {
         Warn(GLOBAL_LOG, "method({}): json parse failed!", method());
@@ -28,9 +29,9 @@ auto GetDeviceInfoApiPlugin::json_parser(const std::string & data) -> std::optio
 
 auto GetDeviceInfoApiPlugin::process(const ApiRequest & req) -> ApiReply {
     auto info = std::get<GET_DEVICE_INFO>(req);
-    Info(GLOBAL_LOG, "method({}): key = {}", method(), info.key);
+    Info(GLOBAL_LOG, "method({}): user = {}, key = {}", method(), info.user, info.key);
     
-    auto device = DeviceManager::getInstance()->deviceInfo(info.key);
+    auto device = DeviceManager::getInstance()->deviceInfo(info.user, info.key);
     if(device == nullopt) {
         return { fmt::format("does not exist device [{}]!", info.key), "" };        
     }

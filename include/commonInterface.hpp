@@ -57,6 +57,7 @@ struct GEN_KEY_INFO {
 };
 
 struct GET_DEVICE_INFO {
+    std::string user;
     std::string key;
 };
 
