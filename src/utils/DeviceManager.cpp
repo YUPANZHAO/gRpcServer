@@ -31,6 +31,11 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         time(&info->last_active_time);
         ret = _key_map[key] = info;
         _id_map[id] = key;
+        // 发送录像消息，交由录像进程开启记录线程
+        RecordMessage msg;
+        strcpy(msg.key, key.data());
+        strcpy(msg.rtmp_url, info->rtmp_url.data());
+        _recorder->send(msg);
     }else {
         ret = _key_map[_id_map[id]];
     }
@@ -80,6 +85,10 @@ void DeviceManager::talkStop(const string & key) {
 
 void DeviceManager::initMsgQuePtr(shared_ptr<MessageQueue<string>> p) {
     _msgQue = p;
+}
+
+void DeviceManager::initRecorder(RecordMachinePtr p) {
+    _recorder = p;
 }
 
 void DeviceManager::setDeviceQuit(const string & key) {

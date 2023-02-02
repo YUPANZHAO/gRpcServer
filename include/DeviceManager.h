@@ -15,6 +15,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include "loggerManager.h"
+#include "RecordMachine.h"
 
 using namespace std;
 using nlohmann::json;
@@ -35,6 +36,7 @@ public:
     void talkStop(const string & key);
 
     void initMsgQuePtr(shared_ptr<MessageQueue<string>> p);
+    void initRecorder(RecordMachinePtr p);
 
     void setDeviceQuit(const string & key);
 
@@ -59,6 +61,7 @@ private:
     string app;
 
     shared_ptr<MessageQueue<string>> _msgQue;
+    RecordMachinePtr _recorder;
 
     map<string,set<string>> _device_user_list;
 };

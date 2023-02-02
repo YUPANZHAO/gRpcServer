@@ -13,6 +13,7 @@
 #include "talkCtrlApiPlugin.h"
 #include "deviceQuitApiPlugin.h"
 #include "heartBeatApiPlugin.h"
+#include "RecordMachine.h"
 
 using nlohmann::json;
 
@@ -33,6 +34,7 @@ struct ApiServer::ApiServerImpl {
     bool initLogger();
     void registerPlugins();
     bool startRpcServer();
+    bool startRecorder();
 
     LoggerManager* _loggerManager_ptr;
     std::unique_ptr<IRpcServer> _grpcServer_ptr;
@@ -40,6 +42,7 @@ struct ApiServer::ApiServerImpl {
     ConfigNode _config;
     std::map<ApiName, IApiPluginPtr> _plugin_map;
     MessageQueue<std::string> _msgQue;
+    RecordMachinePtr _recorder;
 };
 
 ApiServer::ApiServerImpl::~ApiServerImpl() = default;
@@ -49,11 +52,13 @@ bool ApiServer::ApiServerImpl::start() {
     if(initLogger() == false) return false;
     registerPlugins();
     if(startRpcServer() == false) return false;
+    if(startRecorder() == false) return false;
     DeviceManager::getInstance()->init(_config["rtmp"]);
     DeviceManager::getInstance()->initMsgQuePtr(
         shared_ptr<MessageQueue<std::string>>(&_msgQue)
     );
     DeviceManager::getInstance()->startHeartBeatHandleTimer();
+    DeviceManager::getInstance()->initRecorder(_recorder);
     return true;
 }
 
@@ -64,6 +69,7 @@ void ApiServer::ApiServerImpl::wait() {
 }
 
 void ApiServer::ApiServerImpl::shutdown() {
+    _recorder->stop();
     _grpcServer_ptr->shutdown();
     _loggerManager_ptr->clearAllLogger();
 }
@@ -193,6 +199,11 @@ bool ApiServer::ApiServerImpl::startRpcServer() {
         return handle_service_request(data);
     }, api);
     return _grpcServer_ptr->start();
+}
+
+bool ApiServer::ApiServerImpl::startRecorder() {
+    _recorder = std::make_shared<RecordMachine>();
+    return _recorder->start();
 }
 
 ApiServer::ApiServer()
