@@ -46,6 +46,7 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
     time_t pre = -1;
     std::string pre_time = "";
     VideoCapture puller;
+    Info(RECORDER_LOG, "拉流线程开启 key = {}", key);
     puller.pull(rtmp_url, [&](char* buf, int len) {
         auto [ now_time, now ] = this->gettimenow("%Y_%m_%d_%H_%M");
         if(fd == -1 || now >= pre + 60 * this->interval_min) {

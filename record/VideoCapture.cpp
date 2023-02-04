@@ -40,10 +40,7 @@ bool VideoCapture::pull(const std::string & url, VideoCallBack cb) {
     int len = 0;
     while(true) {
         len = RTMP_Read(rtmp, buf, BUFFSIZE);
-        if(len == 0) {
-            sleep(1);
-            continue;
-        }else if(len < 0) {
+        if(len <= 0) {
             break;
         }
         cb(buf, len);

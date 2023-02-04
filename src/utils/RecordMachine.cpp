@@ -43,7 +43,7 @@ bool RecordMachine::start() {
         return false;
     }
 
-    int count = 5;
+    int count = 100;
     do {
         fifo_fd = open(fifo.c_str(), O_WRONLY | O_NONBLOCK);
         if(fifo_fd != -1) break;
