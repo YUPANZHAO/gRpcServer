@@ -46,6 +46,7 @@ enum class LOGGER_MODE { CONSOLE, FILE, BOTH };
 enum class LOG_LEVEL { INFO, ERROR, DEBUG, WARN, CRITICAL }; 
 
 const std::string GLOBAL_LOG = "GLOBAL_LOG";
+const std::string RECORDER_LOG = "RECORDER_LOG";
 
 struct LOGIN_INFO {
     std::string username;
@@ -103,3 +104,8 @@ struct DeviceInfo {
     time_t last_active_time;
 };
 using DeviceInfoPtr = std::shared_ptr<DeviceInfo>;
+
+struct RecordMessage {
+    char key[10];
+    char rtmp_url[50];
+};

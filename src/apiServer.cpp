@@ -202,7 +202,9 @@ bool ApiServer::ApiServerImpl::startRpcServer() {
 }
 
 bool ApiServer::ApiServerImpl::startRecorder() {
+    auto record = _config["record"];
     _recorder = std::make_shared<RecordMachine>();
+    _recorder->init(record["exec"], record["fifo"]);
     return _recorder->start();
 }
 

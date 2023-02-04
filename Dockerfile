@@ -4,11 +4,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list \
     && apt update -y \
-    && apt install -y vim git build-essential manpages-dev pkg-config cmake zlib1g zlib1g-dev libssl-dev libre2-dev \
-    && apt-get install -y autoconf libtool libgflags-dev libgtest-dev libc++-dev net-tools
+    && apt install -y vim git build-essential pkg-config cmake iputils-ping autoconf libtool libgflags-dev libgtest-dev libc++-dev net-tools libssl-dev wget gdb
 
 RUN mkdir /root/libs-build \
     && cd /root/libs-build \
+    && wget http://www.zlib.net/fossils/zlib-1.2.11.tar.gz \
+    && tar -zxvf zlib-1.2.11.tar.gz \
+    && cd zlib-1.2.11 \
+    && ./configure \
+    && make -j8 \
+    && make install
+
+RUN cd /root/libs-build \
     && git clone https://ghproxy.com/https://github.com/grpc/grpc.git \
     && cd grpc \
     && git checkout -b v1.46.x v1.46.6 \
@@ -19,12 +26,12 @@ RUN mkdir /root/libs-build \
     && git submodule update --init --recursive \
     && ./autogen.sh \
     && ./configure \
-    && make -j 8 \
+    && make -j8 \
     && make install \
-    && ldconfig \
+    && ldconfig -v \
     && cd ../.. \
     && mkdir -p cmake/build \
     && cd cmake/build \
     && cmake ../.. \
-    && make -j 8 \
+    && make -j8 \
     && make install

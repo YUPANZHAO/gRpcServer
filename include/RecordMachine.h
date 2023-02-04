@@ -7,11 +7,12 @@
 #include <memory>
 #include <queue>
 #include "loggerManager.h"
-
-struct RecordMessage {
-    char key[10];
-    char rtmp_url[50];
-};
+#include <thread>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
 
 class RecordMachine {
 public:
@@ -19,16 +20,19 @@ public:
     ~RecordMachine();
 
 public:
+    void init(const std::string & root_path, const std::string & fifo);
+
     bool start();
     void stop();
 
     bool send(const RecordMessage & msg);
 
 private:
-    bool is_running;
-    int pipefd[2];
-    pid_t pid;
+    std::string exec;
+    std::string fifo;
 
-    void run();
+    bool is_running;
+    int fifo_fd;
+    pid_t pid;
 };
 using RecordMachinePtr = std::shared_ptr<RecordMachine>;

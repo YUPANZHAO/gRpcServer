@@ -2,18 +2,21 @@
 CC = g++ -g
 CFLAGS = -std=c++17
 INCLUDE = -I./include
-LIBS = -L./libs -lspdlog -lyaml-cpp -lssl -lcrypto -lupb -lre2 -lz -lcares -laddress_sorting
+LIBS = -L./libs -lspdlog -lyaml-cpp
 GRPCFLAG = `pkg-config --cflags protobuf grpc` \
 	`pkg-config --libs protobuf grpc++ grpc` -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed -ldl
-ALLFLAGS = $(INCLUDE) $(GRPCFLAG) $(LIBS) $(CFLAGS)
+ALLFLAGS = $(INCLUDE) $(LIBS) $(GRPCFLAG) $(CFLAGS)
 
 # 文件位置
 BUILD_DIR = build
 BIN_DIR = bin
 EXEC = server
+RECORDER = recorder
 
 # 目标对象
 OBJS = $(addprefix $(BUILD_DIR)/, $(patsubst src/%.cpp, %.o, $(shell find src -name *.cpp | xargs)) $(patsubst src/%.cc, %.o, $(shell find src -name *.cc | xargs)))
+
+all: $(BIN_DIR)/$(EXEC) $(RECORDER)
 
 $(BIN_DIR)/$(EXEC): $(OBJS)
 	-mkdir $(BIN_DIR)
@@ -26,6 +29,9 @@ $(BUILD_DIR)/%.o: src/%.cpp
 $(BUILD_DIR)/%.o: src/%.cc
 	-mkdir -p $(@D)
 	$(CC) -o $@ -c $^ $(ALLFLAGS)
+
+$(RECORDER):
+	$(MAKE) -f record/Makefile
 
 .PHONY: clean
 clean:

@@ -12,6 +12,19 @@ config:
         port: 1935
         app: live
 
+    # 录像配置
+    record:
+        # 录像机可执行程序
+        exec: bin/recorder
+        # 录像存储根目录(不能为多级目录)
+        path: stream_records
+        # 录像间隔时间(单位：分钟)
+        interval: 1
+        # 通信管道
+        fifo: bin/fifo
+        # 录像日志存储目录
+        log_path: logs/record/spdlog.log
+
     # 日志配置
     log:
         # 使用日志库
@@ -23,7 +36,7 @@ config:
             pattern:
         file:
             # 生成日志的名称
-            name: logs/spdlog.log
+            name: logs/global/spdlog.log
             level: debug
             pattern:
             # 每日几点几分重新生成日志文件
