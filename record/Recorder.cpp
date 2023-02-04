@@ -21,10 +21,12 @@ void Recorder::start() {
             break;
         }
         Info(RECORDER_LOG, "获取到消息: key = {}, rtmp_url = {}", msg.key, msg.rtmp_url);
-        std::thread thd([msg, this]() {
-            this->download_task(msg.key, msg.rtmp_url);
-        });
-        thd.detach();
+        if(!is_exist[msg.key]) {
+            std::thread thd([msg, this]() {
+                this->download_task(msg.key, msg.rtmp_url);
+            });
+            thd.detach();
+        }
     }
 }
 
@@ -47,6 +49,7 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
     std::string pre_time = "";
     VideoCapture puller;
     Info(RECORDER_LOG, "拉流线程开启 key = {}", key);
+    is_exist[key] = true;
     puller.pull(rtmp_url, [&](char* buf, int len) {
         auto [ now_time, now ] = this->gettimenow("%Y_%m_%d_%H_%M");
         if(fd == -1 || now >= pre + 60 * this->interval_min) {
@@ -76,6 +79,7 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
     if(fd != -1) {
         close(fd);
     }
+    is_exist[key] = false;
     Warn(RECORDER_LOG, "拉流线程结束 key = {}", key);
 }
 

@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <thread>
+#include <map>
 #include "spdlog/spdlog.h"
 #include "VideoCapture.h"
 #include "commonInterface.hpp"
@@ -27,4 +28,6 @@ private:
     std::string root_path;
     int interval_min;
     int fifo_fd;
+
+    std::map<std::string,bool> is_exist;
 };
