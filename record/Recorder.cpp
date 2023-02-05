@@ -1,9 +1,10 @@
 #include "Recorder.h"
 
-Recorder::Recorder(const std::string & path, int interval_min, int fifo_fd) {
+Recorder::Recorder(const std::string & path, int interval_min, int fifo_fd, int days) {
     this->root_path = path;
     this->interval_min = interval_min;
     this->fifo_fd = fifo_fd;
+    this->reserved_days = days;
 }
 
 Recorder::~Recorder() {
@@ -51,15 +52,13 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
     Info(RECORDER_LOG, "拉流线程开启 key = {}", key);
     is_exist[key] = true;
     puller.pull(rtmp_url, [&](char* buf, int len) {
-        auto [ now_time, now ] = this->gettimenow("%Y_%m_%d_%H_%M");
+        auto [ now_time, now ] = this->get_time_now("%Y_%m_%d_%H_%M");
         if(fd == -1 || now >= pre + 60 * this->interval_min) {
-            pre_time = now_time;
-            pre = (now - now % 60);
             if(fd != -1) {
                 close(fd);
                 fd = -1;
             }
-            fd = open(fmt::format("{}/{}_{}_{}.flv", save_path, key, now_time, this->getnexttime(now, "%Y_%m_%d_%H_%M")).c_str(),
+            fd = open(fmt::format("{}/{}_{}_{}.flv", save_path, key, now_time, this->get_offset_time(now, this->interval_min, "%Y_%m_%d_%H_%M")).c_str(),
                     O_CREAT | O_WRONLY | O_APPEND);
             if(fd != -1 && len >= 3 && !(buf[0] == 'F' && buf[1] == 'L' && buf[2] == 'V')) {
                 char flv_header[13] = {0};
@@ -71,6 +70,16 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
                 flv_header[8] = 0x09;
                 write(fd, flv_header, 13);
             }
+
+            if(pre_time.substr(0, 10) != now_time.substr(0, 10)) {
+                std::thread clear_file([&]() {
+                    this->clear_expired_video(key);
+                });
+                clear_file.detach();
+            }
+
+            pre_time = now_time;
+            pre = (now - now % 60);
         }
         if(fd != -1) {
             write(fd, buf, len);
@@ -83,7 +92,7 @@ void Recorder::download_task(const std::string key, const std::string rtmp_url) 
     Warn(RECORDER_LOG, "拉流线程结束 key = {}", key);
 }
 
-auto Recorder::gettimenow(const std::string & time_fmt) -> std::tuple<std::string,time_t> {
+auto Recorder::get_time_now(const std::string & time_fmt) -> std::tuple<std::string,time_t> {
     time_t now = time(NULL);
     struct tm tm;
     localtime_r(&now, &tm);
@@ -92,11 +101,30 @@ auto Recorder::gettimenow(const std::string & time_fmt) -> std::tuple<std::strin
     return { time_now, now };
 }
 
-auto Recorder::getnexttime(time_t tm, const std::string & fmt) -> std::string {
-    tm += 60 * interval_min;
+auto Recorder::get_offset_time(time_t tm, int offset_min, const std::string & fmt) -> std::string {
+    tm += 60 * offset_min;
     struct tm time;
     localtime_r(&tm, &time);
     char time_now[30];
     strftime(time_now, sizeof(time_now), fmt.c_str(), &time);
     return time_now;
+}
+
+void Recorder::clear_expired_video(const std::string key) {
+    const std::string save_path = fmt::format("{}/{}", root_path, key);
+    DIR* dir = opendir(save_path.c_str());
+    if(dir == nullptr) return;
+    
+    auto [ dump_me, now ] = get_time_now("%Y_%m_%d");
+    auto pre_time = get_offset_time(now, -reserved_days * 24 * 60, "%Y_%m_%d");
+
+    dirent* file;
+    while((file = readdir(dir)) != nullptr) {
+        std::string name = file->d_name;
+        if(name.length() > key.length() + 1 + pre_time.length()
+        && name.substr(key.length() + 1, pre_time.length()) == pre_time) {
+            unlink((save_path + "/" + name).c_str());
+        }
+    }
+    closedir(dir);
 }

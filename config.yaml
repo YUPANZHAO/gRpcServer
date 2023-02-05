@@ -20,6 +20,8 @@ config:
         path: stream_records
         # 录像间隔时间(单位：分钟)
         interval: 1
+        # 录像保留天数
+        reserved_days: 7
         # 通信管道
         fifo: bin/fifo
         # 录像日志存储目录

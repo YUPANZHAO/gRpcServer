@@ -17,6 +17,7 @@ int main() {
 
     std::string path = record["path"].as<std::string>();
     int interval_min = record["interval"].as<int>();
+    int reserved_days = record["reserved_days"].as<int>();
     std::string fifo = record["fifo"].as<std::string>();
     
     config["config"]["log"]["file"]["name"] = record["log_path"];
@@ -41,7 +42,7 @@ int main() {
 
     Info(RECORDER_LOG, "录像进程开启");
 
-    Recorder recorder(path, interval_min, fifo_fd);
+    Recorder recorder(path, interval_min, fifo_fd, reserved_days);
     recorder.start();
 
     close(fifo_fd);
