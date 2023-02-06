@@ -18,7 +18,7 @@ RUN mkdir /root/libs-build \
 RUN cd /root/libs-build \
     && git clone https://ghproxy.com/https://github.com/grpc/grpc.git \
     && cd grpc \
-    && git checkout -b v1.46.x v1.46.6 \
+    && git checkout -b v1.51.x v1.51.1 \
     && sed -i "s#https#https://ghproxy.com/https#g" .gitmodules \
     && git submodule update --init \
     && cd third_party/protobuf \

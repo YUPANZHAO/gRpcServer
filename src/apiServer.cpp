@@ -14,6 +14,7 @@
 #include "deviceQuitApiPlugin.h"
 #include "heartBeatApiPlugin.h"
 #include "RecordMachine.h"
+#include "recordDownloadApiPlugin.h"
 
 using nlohmann::json;
 
@@ -29,6 +30,7 @@ struct ApiServer::ApiServerImpl {
 
     auto handle_service_request(const std::string&) -> std::string;
     auto handle_message_callback(const std::string&) -> std::string;
+    void handle_buffer_callback(const std::string&, const std::string&, BufferCallBack);
 
     bool loadConfigFile(const std::string &);
     bool initLogger();
@@ -146,6 +148,18 @@ auto ApiServer::ApiServerImpl::handle_message_callback(const std::string & id) -
     return (*ret);
 }
 
+void ApiServer::ApiServerImpl::handle_buffer_callback(const std::string & method,
+const std::string& json_data, BufferCallBack buffer_callback) {
+    IApiPluginPtr plugin = nullptr;
+    if(method == "record_download") {
+        plugin = std::make_shared<RecordDownloadApiPlugin>(buffer_callback);
+    }
+    if(!plugin) return;
+    auto request = plugin->json_parser(json_data);
+    if(request == std::nullopt) return;
+    plugin->process(*request);
+}
+
 bool ApiServer::ApiServerImpl::loadConfigFile(const std::string & filename) {
     _configDec_ptr = std::make_unique<YamlConfigDec>();
     auto [ config, err ] = _configDec_ptr->decode(filename);
@@ -197,14 +211,18 @@ bool ApiServer::ApiServerImpl::startRpcServer() {
     }();
     _grpcServer_ptr->init([&](const std::string& data) -> std::string {
         return handle_service_request(data);
-    }, api);
+    },
+    [&](const std::string& method, const std::string& data, BufferCallBack buf_cb) {
+        handle_buffer_callback(method, data, buf_cb);
+    },
+    api);
     return _grpcServer_ptr->start();
 }
 
 bool ApiServer::ApiServerImpl::startRecorder() {
     auto record = _config["record"];
     _recorder = std::make_shared<RecordMachine>();
-    _recorder->init(record["exec"], record["fifo"]);
+    _recorder->init(record["path"], record["exec"], record["fifo"]);
     return _recorder->start();
 }
 

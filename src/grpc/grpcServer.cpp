@@ -5,7 +5,7 @@
 struct GrpcServer::GrpcServerImpl {
     ~GrpcServerImpl();
     
-    void init(ServiceFunc, ConfigNode);
+    void init(ServiceFunc, ServiceBufferFunc, ConfigNode);
     bool start();
     void wait();
     void shutdown();
@@ -17,11 +17,11 @@ struct GrpcServer::GrpcServerImpl {
 
 GrpcServer::GrpcServerImpl::~GrpcServerImpl() = default;
     
-void GrpcServer::GrpcServerImpl::init(ServiceFunc func, ConfigNode api) {
+void GrpcServer::GrpcServerImpl::init(ServiceFunc func, ServiceBufferFunc buf_func, ConfigNode api) {
     _service = std::make_unique<IPCService>();
     _builder = std::make_unique<ServerBuilder>();
 
-    _service->init(func);
+    _service->init(func, buf_func);
 
     std::string ip = api["ip"];
     std::string port = api["port"];
@@ -30,7 +30,7 @@ void GrpcServer::GrpcServerImpl::init(ServiceFunc func, ConfigNode api) {
     _builder->AddListeningPort(server_port, grpc::InsecureServerCredentials());
     _builder->RegisterService(_service.get());
 
-    Info(GLOBAL_LOG, "init grpc server...");
+    Info(GLOBAL_LOG, "init grpc server... (version: {})", grpc_version_string());
     Info(GLOBAL_LOG, "grpc listing port: {}", server_port);
 }
 
@@ -56,7 +56,7 @@ GrpcServer::GrpcServer()
 
 GrpcServer::~GrpcServer() = default;
 
-void GrpcServer::init(ServiceFunc func, ConfigNode api) { _impl->init(func, api); }
+void GrpcServer::init(ServiceFunc func, ServiceBufferFunc buf_func, ConfigNode api) { _impl->init(func, buf_func, api); }
 
 bool GrpcServer::start() { return _impl->start(); }
 

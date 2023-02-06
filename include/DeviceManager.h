@@ -44,6 +44,8 @@ public:
     void startHeartBeatHandleTimer();
     void heartBeatHandlerImpl();
 
+    void recordDownload(const string & key, const string & begin_time, const string & end_time, BufferCallBack buf_cb);
+
 private:
     DeviceManager();
 

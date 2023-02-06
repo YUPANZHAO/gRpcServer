@@ -11,7 +11,10 @@
 #include <tuple>
 #include "yamlConfigDec.h"
 
+using BufferCallBack = std::function<void(char*,int)>;
+
 using ServiceFunc = std::function<std::string(const std::string&)>;
+using ServiceBufferFunc = std::function<void(const std::string&,const std::string&,BufferCallBack)>;
 
 class IApiServer {
 public:
@@ -24,7 +27,7 @@ public:
 class IRpcServer {
 public:
     virtual ~IRpcServer() {}
-    virtual void init(ServiceFunc, ConfigNode) = 0;
+    virtual void init(ServiceFunc, ServiceBufferFunc, ConfigNode) = 0;
     virtual bool start() = 0;
     virtual void wait() = 0;
     virtual void shutdown() = 0;
@@ -79,8 +82,14 @@ struct HEART_BEAT_INFO {
     std::string id;
 };
 
+struct RECORD_DOWNLOAD_INFO {
+    std::string key;
+    std::string begin_time;
+    std::string end_time;
+};
+
 using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO, TALK_CTRL_INFO,
-                                MSG_CB_INFO, DEVICE_QUIT_INFO, HEART_BEAT_INFO>;
+                                MSG_CB_INFO, DEVICE_QUIT_INFO, HEART_BEAT_INFO, RECORD_DOWNLOAD_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
 class IApiPlugin {

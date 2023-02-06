@@ -8,7 +8,7 @@ public:
     ~GrpcServer() override;
 
 public:
-    void init(ServiceFunc, ConfigNode) override;
+    void init(ServiceFunc, ServiceBufferFunc, ConfigNode) override;
     bool start() override;
     void wait() override;
     void shutdown() override;

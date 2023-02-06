@@ -155,3 +155,9 @@ void DeviceManager::heartBeatHandlerImpl() {
         }
     }
 }
+
+void DeviceManager::recordDownload(const string & key,
+const string & begin_time, const string & end_time,
+BufferCallBack buf_cb) {
+    _recorder->download(key, begin_time, end_time, buf_cb);
+}

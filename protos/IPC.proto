@@ -5,6 +5,7 @@ package IPC;
 service IPCSrv {
     rpc call (IPCRequest) returns (IPCReply) {}
     rpc streamCall(IPCRequest) returns (stream IPCReply) {}
+    rpc recordDownload(IPCRequest) returns (stream FileReply) {}
 }
 
 message IPCRequest {
@@ -13,4 +14,8 @@ message IPCRequest {
 
 message IPCReply {
     string body = 1;
+}
+
+message FileReply {
+    bytes buffer = 1;
 }
