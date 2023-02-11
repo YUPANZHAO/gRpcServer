@@ -98,6 +98,7 @@ BufferCallBack buf_cb) {
     if(dir == nullptr) return;
     dirent* file;
     const int time_length = 16;
+    bool first_write = true;
     while((file = readdir(dir)) != nullptr) {
         std::string name = file->d_name;
         if(name.length() > key.length() + 2 + (time_length << 1)) {
@@ -105,6 +106,17 @@ BufferCallBack buf_cb) {
             std::string end = name.substr(key.length() + 2 + time_length, time_length);
             if(check_time_is_between(begin, begin_time, end_time)
             || check_time_is_between(end, begin_time, end_time)) {
+                if(first_write) {
+                    char flv_header[13] = {0};
+                    flv_header[0] = 0x46;
+                    flv_header[1] = 0x4C;
+                    flv_header[2] = 0x56;
+                    flv_header[3] = 0x01;
+                    flv_header[4] = 0x05;
+                    flv_header[8] = 0x09;
+                    buf_cb(flv_header, 13);
+                    first_write = false;
+                }
                 writeFile(save_dir + "/" + name, buf_cb);
             }
         }
@@ -146,6 +158,7 @@ void RecordMachine::writeFile(const std::string & file_path, BufferCallBack buf_
     char* buf = new char [RECORD_BUFF_SIZE];
     std::ifstream infile;
     infile.open(file_path, std::ifstream::in | std::ifstream::binary);
+    if(!infile.eof()) infile.read(buf, 9 /* FLV_HEADER_LENGTH */ + 4 /* PRIVIOUS_TAG_SIZE */ );
     while(!infile.eof()) {
         infile.read(buf, RECORD_BUFF_SIZE);
         buf_cb(buf, infile.gcount());
