@@ -1,6 +1,7 @@
 #pragma once
 
 #include "commonInterface.hpp"
+#include "UserManager.h"
 
 class GetDeviceInfoApiPlugin : public IApiPlugin {
 public:

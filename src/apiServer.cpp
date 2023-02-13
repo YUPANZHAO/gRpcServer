@@ -15,6 +15,9 @@
 #include "heartBeatApiPlugin.h"
 #include "RecordMachine.h"
 #include "recordDownloadApiPlugin.h"
+#include "UserManager.h"
+#include "registerApiPlugin.h"
+#include "logoutApiPlugin.h"
 
 using nlohmann::json;
 
@@ -61,6 +64,9 @@ bool ApiServer::ApiServerImpl::start() {
     );
     DeviceManager::getInstance()->startHeartBeatHandleTimer();
     DeviceManager::getInstance()->initRecorder(_recorder);
+    UserManager::getInstance()->initMsgQuePtr(
+        shared_ptr<MessageQueue<std::string>>(&_msgQue)
+    );
     return true;
 }
 
@@ -183,6 +189,8 @@ bool ApiServer::ApiServerImpl::initLogger() {
 void ApiServer::ApiServerImpl::registerPlugins() {
     std::vector<IApiPluginPtr> plugins {
         std::make_shared<LoginApiPlugin>(),
+        std::make_shared<RegisterApiPlugin>(),
+        std::make_shared<LogoutApiPlugin>(),
         std::make_shared<GenKeyApiPlugin>(),
         std::make_shared<GetDeviceInfoApiPlugin>(),
         std::make_shared<TalkCtrlApiPlugin>(),

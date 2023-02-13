@@ -3,10 +3,10 @@
 #include "commonInterface.hpp"
 #include "UserManager.h"
 
-class LoginApiPlugin : public IApiPlugin {
+class RegisterApiPlugin : public IApiPlugin {
 public:
-    LoginApiPlugin();
-    ~LoginApiPlugin();
+    RegisterApiPlugin();
+    ~RegisterApiPlugin();
     
 public:
     auto method() -> ApiName;
@@ -14,4 +14,4 @@ public:
     auto process(const ApiRequest &) -> ApiReply;
 };
 
-using LoginApiPluginPtr = std::shared_ptr<LoginApiPlugin>;
+using RegisterApiPluginPtr = std::shared_ptr<RegisterApiPlugin>;

@@ -36,6 +36,8 @@ auto GetDeviceInfoApiPlugin::process(const ApiRequest & req) -> ApiReply {
         return { fmt::format("does not exist device [{}]!", info.key), "" };        
     }
 
+    UserManager::getInstance()->connect_user_device(info.user, info.key);
+
     std::string msg(json({
         { "name", (*device)->name },
         { "rtmp_url", (*device)->rtmp_url } 

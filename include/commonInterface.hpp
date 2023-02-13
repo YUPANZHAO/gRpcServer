@@ -11,6 +11,9 @@
 #include <tuple>
 #include "yamlConfigDec.h"
 
+const int KEY_LEN = 6;
+const int TOKEN_LEN = 16;
+
 using BufferCallBack = std::function<void(char*,int)>;
 
 using ServiceFunc = std::function<std::string(const std::string&)>;
@@ -56,6 +59,15 @@ struct LOGIN_INFO {
     std::string password;
 };
 
+struct REGISTER_INFO {
+    std::string username;
+    std::string password;
+};
+
+struct LOGOUT_INFO {
+    std::string token;
+};
+
 struct GEN_KEY_INFO {
     std::string device_id;
 };
@@ -88,7 +100,7 @@ struct RECORD_DOWNLOAD_INFO {
     std::string end_time;
 };
 
-using ApiRequest = std::variant<LOGIN_INFO, GEN_KEY_INFO, GET_DEVICE_INFO, TALK_CTRL_INFO,
+using ApiRequest = std::variant<LOGIN_INFO, REGISTER_INFO, LOGOUT_INFO, GEN_KEY_INFO, GET_DEVICE_INFO, TALK_CTRL_INFO,
                                 MSG_CB_INFO, DEVICE_QUIT_INFO, HEART_BEAT_INFO, RECORD_DOWNLOAD_INFO>;
 using ApiReply = std::tuple<std::optional<std::string>, std::string>;
 using ApiName = const std::string;
@@ -118,3 +130,10 @@ struct RecordMessage {
     char key[10];
     char rtmp_url[50];
 };
+
+struct UserInfo {
+    std::string name;
+    std::string password;
+    std::string token;
+};
+using UserInfoPtr = std::shared_ptr<UserInfo>;

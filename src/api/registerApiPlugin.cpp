@@ -1,19 +1,19 @@
-#include "loginApiPlugin.h"
+#include "registerApiPlugin.h"
 #include "loggerManager.h"
 #include "nlohmann/json.hpp"
 
 using nlohmann::json;
 
-LoginApiPlugin::LoginApiPlugin() {}
+RegisterApiPlugin::RegisterApiPlugin() {}
 
-LoginApiPlugin::~LoginApiPlugin() {}
+RegisterApiPlugin::~RegisterApiPlugin() {}
 
-auto LoginApiPlugin::method() -> ApiName {
-    return "login";
+auto RegisterApiPlugin::method() -> ApiName {
+    return "register";
 }
 
-auto LoginApiPlugin::json_parser(const std::string & data) -> std::optional<ApiRequest> {
-    LOGIN_INFO info = {};
+auto RegisterApiPlugin::json_parser(const std::string & data) -> std::optional<ApiRequest> {
+    REGISTER_INFO info = {};
     auto json_data = json::parse(data);
     try {
         info.username = json_data["username"];
@@ -26,19 +26,19 @@ auto LoginApiPlugin::json_parser(const std::string & data) -> std::optional<ApiR
     return req;
 }
 
-auto LoginApiPlugin::process(const ApiRequest & req) -> ApiReply {
-    auto info = std::get<LOGIN_INFO>(req);
+auto RegisterApiPlugin::process(const ApiRequest & req) -> ApiReply {
+    auto info = std::get<REGISTER_INFO>(req);
     Info(GLOBAL_LOG, "method({}): username = {}, password = {}", method(), info.username, info.password);
-    auto token = UserManager::getInstance()->signIn(info.username, info.password);
+    auto ret = UserManager::getInstance()->signUp(info.username, info.password);
     std::string msg;
-    if(token == std::nullopt) {
+    if(ret == std::nullopt) {
         msg = json({
-            { "msg", "failure" }
+            { "msg", "success" }
         }).dump();
     }else {
         msg = json({
-            { "token", (*token) },
-            { "msg", "success" }
+            { "msg", "failure" },
+            { "reason", (*ret) }
         }).dump();
     }
     return { std::nullopt, msg };

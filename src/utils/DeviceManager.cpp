@@ -19,7 +19,7 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
     string key;
     if(_id_map.find(id) == _id_map.end()) {
         do {
-            key = _key_generator.generator();
+            key = _key_generator.generator(KEY_LEN);
         }while(_key_map.find(key) != _key_map.end());
         DeviceInfoPtr info = make_shared<DeviceInfo>();
         info->name = "unknow";
