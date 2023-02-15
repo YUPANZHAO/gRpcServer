@@ -34,7 +34,8 @@ auto GenKeyApiPlugin::process(const ApiRequest & req) -> ApiReply {
     
     std::string msg(json({
         { "key", (*device)->key },
-        { "url", (*device)->rtmp_url }
+        { "url", (*device)->rtmp_url },
+        { "encryption", (*device)->encryption }
     }).dump());
     
     return { std::nullopt, msg };

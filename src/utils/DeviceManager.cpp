@@ -25,6 +25,7 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         info->name = "unknow";
         info->device_id = id;
         info->rtmp_url = genRtmpUrl(key);
+        info->encryption = _key_generator.generator(ENCRYPTION_LEN);
         info->key = key;
         info->is_talking = false;
         info->is_active = false;

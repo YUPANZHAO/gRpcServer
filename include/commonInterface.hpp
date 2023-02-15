@@ -13,6 +13,7 @@
 
 const int KEY_LEN = 6;
 const int TOKEN_LEN = 16;
+const int ENCRYPTION_LEN = 8;
 
 using BufferCallBack = std::function<void(char*,int)>;
 
@@ -119,6 +120,7 @@ struct DeviceInfo {
     std::string device_id;
     std::string key;
     std::string rtmp_url;
+    std::string encryption;
     // 动态信息
     bool is_talking;
     bool is_active;

@@ -40,7 +40,8 @@ auto GetDeviceInfoApiPlugin::process(const ApiRequest & req) -> ApiReply {
 
     std::string msg(json({
         { "name", (*device)->name },
-        { "rtmp_url", (*device)->rtmp_url } 
+        { "rtmp_url", (*device)->rtmp_url },
+        { "encryption", (*device)->encryption }
     }).dump());
     
     return  { std::nullopt, msg };
