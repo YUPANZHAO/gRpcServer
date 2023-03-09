@@ -26,6 +26,7 @@ auto UserManager::signUp(const string & name, const string & password) -> option
 auto UserManager::signIn(const string & name, const string & password) -> optional<string> {
     if(_user_list.find(name) == _user_list.end()) return std::nullopt;
     auto user_info_ptr = _user_list[name];
+    if(user_info_ptr->password != password) return std::nullopt;
     if(user_info_ptr->token.length() == 0) {
         do {
             user_info_ptr->token = _key_generator.generator(TOKEN_LEN);
