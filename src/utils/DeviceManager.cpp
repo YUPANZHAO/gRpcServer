@@ -13,7 +13,7 @@ void DeviceManager::init(ConfigNode _cfg) {
     app = string(_cfg["app"]);
 }
 
-auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
+auto DeviceManager::addDevice(const string & id, const string & name) -> optional<DeviceInfoPtr> {
     lock_guard<mutex> guard(_mutex);
     optional<DeviceInfoPtr> ret = nullopt;
     string key;
@@ -41,6 +41,10 @@ auto DeviceManager::addDevice(const string & id) -> optional<DeviceInfoPtr> {
         strcpy(msg.key, (*ret)->key.data());
         strcpy(msg.rtmp_url, (*ret)->rtmp_url.data());
         _recorder->send(msg);
+    }
+    // 设置设备名称
+    if(ret != nullopt) {
+        (*ret)->name = name;
     }
     return ret;
 }

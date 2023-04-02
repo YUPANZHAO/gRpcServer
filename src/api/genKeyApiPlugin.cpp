@@ -18,6 +18,7 @@ auto GenKeyApiPlugin::json_parser(const std::string & data) -> std::optional<Api
     auto json_data = json::parse(data);
     try {
         info.device_id = json_data["device_id"];
+        info.device_name = json_data["device_name"];
     }catch(std::exception&) {
         Warn(GLOBAL_LOG, "method({}): json parse failed!", method());
         return std::nullopt;
@@ -28,9 +29,9 @@ auto GenKeyApiPlugin::json_parser(const std::string & data) -> std::optional<Api
 
 auto GenKeyApiPlugin::process(const ApiRequest & req) -> ApiReply {
     auto info = std::get<GEN_KEY_INFO>(req);
-    Info(GLOBAL_LOG, "method({}): device_id = {}", method(), info.device_id);
+    Info(GLOBAL_LOG, "method({}): device_id = {} device_name = {}", method(), info.device_id, info.device_name);
 
-    auto device = DeviceManager::getInstance()->addDevice(info.device_id);
+    auto device = DeviceManager::getInstance()->addDevice(info.device_id, info.device_name);
     
     std::string msg(json({
         { "key", (*device)->key },

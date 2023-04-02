@@ -71,6 +71,7 @@ struct LOGOUT_INFO {
 
 struct GEN_KEY_INFO {
     std::string device_id;
+    std::string device_name;
 };
 
 struct GET_DEVICE_INFO {

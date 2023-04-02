@@ -28,7 +28,7 @@ public:
 public:
     void init(ConfigNode _cfg);
 
-    auto addDevice(const string & id) -> optional<DeviceInfoPtr>;
+    auto addDevice(const string & id, const string & name) -> optional<DeviceInfoPtr>;
     auto deviceInfo(const string & user, const string & key) -> optional<DeviceInfoPtr>;
 
     bool talkAble(const string & key);
