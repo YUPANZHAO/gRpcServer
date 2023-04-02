@@ -36,9 +36,11 @@ auto LoginApiPlugin::process(const ApiRequest & req) -> ApiReply {
             { "msg", "failure" }
         }).dump();
     }else {
+        auto key_set = UserManager::getInstance()->getAllDevice(*token);
         msg = json({
             { "token", (*token) },
-            { "msg", "success" }
+            { "msg", "success" },
+            { "device_list", json(key_set) },
         }).dump();
     }
     return { std::nullopt, msg };

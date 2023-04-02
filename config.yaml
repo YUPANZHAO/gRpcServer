@@ -8,7 +8,7 @@ config:
         port: 9000
 
     rtmp:
-        host: 10.200.122.167
+        host: 192.168.149.194
         port: 1935
         app: live
 
